@@ -1,12 +1,23 @@
+import { router } from 'expo-router'
+import { useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native'
 
 const Screen = () => {
+    const changePage = () => {
+        setTimeout(() => router.replace('/login'), 3000);
+    }
+
+    useEffect(() => {
+        changePage()
+    }, [])
+
     return(
         <View style={styles.container}>
             <View style={styles.logoArea}>
                 <Image 
                     style={styles.logo}
                     source={require('../assets/logo.png')}
+                    resizeMode='cover'
                 />
             </View>
             <View style={styles.logoNameArea}>
@@ -18,11 +29,14 @@ const Screen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F47C7C'
     },
     logoArea: {
+        justifyContent: 'center',
+        alignItems: 'center',
         width: 200,
         height: 200,
         backgroundColor: '#FFF',
